@@ -2,8 +2,8 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { IoMdClose } from "react-icons/io";
-import { Button } from "../button";
 
+import Button from "../Button";
 
 interface ModalProps {
   isOpen?: boolean;
@@ -168,14 +168,14 @@ const Modal: React.FC<ModalProps> = ({
                   {secondaryAction && secondaryActionLabel && (
                     <Button 
                       disabled={disabled} 
-                      content={secondaryActionLabel} 
+                      label={secondaryActionLabel} 
                       onClick={handleSecondaryAction}
-                   
+                      outline
                     />  
                   )}
                   <Button 
                     disabled={disabled} 
-                    content={actionLabel} 
+                    label={actionLabel} 
                     onClick={handleSubmit}
                   />
                 </div>

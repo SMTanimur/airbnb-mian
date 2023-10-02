@@ -18,8 +18,7 @@ import useLoginModal from "@/app/hooks/useLoginModal";
 import Modal from "./Modal";
 import Input from "../inputs/Input";
 import Heading from "../Heading";
-import { Button } from "../button";
-
+import Button from "../Button";
 
 const LoginModal = () => {
   const router = useRouter();
@@ -98,15 +97,15 @@ const LoginModal = () => {
     <div className="flex flex-col gap-4 mt-3">
       <hr />
       <Button 
-        
-        content="Continue with Google"
-        leftIcon={FcGoogle}
+        outline 
+        label="Continue with Google"
+        icon={FcGoogle}
         onClick={() => signIn('google')}
       />
       <Button 
-       
-        content="Continue with Github"
-        leftIcon={AiFillGithub}
+        outline 
+        label="Continue with Github"
+        icon={AiFillGithub}
         onClick={() => signIn('github')}
       />
       <div className="
