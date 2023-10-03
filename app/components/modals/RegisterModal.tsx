@@ -19,12 +19,14 @@ import Modal from "./Modal";
 import Input from "../inputs/Input";
 import Heading from "../Heading";
 import Button from "../Button";
+import { useAuth } from "@/app/hooks/useAuth";
+import { TRegister } from "@/app/types";
 
 const RegisterModal= () => {
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
   const [isLoading, setIsLoading] = useState(false);
-
+  const {attemptToRegister,SignupLoading}=useAuth()
   const { 
     register, 
     handleSubmit,
@@ -39,21 +41,8 @@ const RegisterModal= () => {
     },
   });
 
-  const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    setIsLoading(true);
-
-    axios.post('/api/register', data)
-    .then(() => {
-      toast.success('Registered!');
-      registerModal.onClose();
-      loginModal.onOpen();
-    })
-    .catch((error) => {
-      toast.error(error);
-    })
-    .finally(() => {
-      setIsLoading(false);
-    })
+  const onSubmit: SubmitHandler<FieldValues> = (data:FieldValues) => {
+    attemptToRegister(data as TRegister)
   }
 
   const onToggle = useCallback(() => {

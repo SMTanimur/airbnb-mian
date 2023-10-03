@@ -1,18 +1,16 @@
-import { SafeUser } from "@/app/types";
+"use client"
 
 import Categories from "./Categories";
 import Container from "../Container";
 import Logo from "./Logo";
 import Search from "./Search";
 import UserMenu from "./UserMenu";
+import { useCurrentUser } from "@/app/hooks/useCurrentUser";
 
-interface NavbarProps {
-  currentUser?: SafeUser | null;
-}
 
-const Navbar: React.FC<NavbarProps> = ({
-  currentUser,
-}) => {
+
+const Navbar: React.FC = () => {
+  const {currentUser}=useCurrentUser()
   return ( 
     <div className="fixed w-full bg-white z-10 shadow-sm">
       <div

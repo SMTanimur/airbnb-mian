@@ -9,6 +9,7 @@ import './globals.css'
 import ClientOnly from './components/ClientOnly';
 import ToasterProvider from './providers/ToasterProvider';
 import getCurrentUser from './actions/getCurrentUser';
+import { QueryProvider } from './providers/query.provider';
 export const metadata = {
   title: 'Airbnb',
   description: 'Airbnb Clone',
@@ -23,22 +24,23 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const currentUser = await getCurrentUser();
 
   return (
     <html lang="en">
       <body className={font.className}>
+        <QueryProvider>
         <ClientOnly>
           <ToasterProvider />
           <LoginModal />
           <RegisterModal />
           <SearchModal />
           <RentModal />
-          <Navbar currentUser={currentUser} />
+          <Navbar />
         </ClientOnly>
         <div className="pb-20 pt-28">
           {children}
         </div>
+        </QueryProvider>
       </body>
     </html>
   )

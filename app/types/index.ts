@@ -1,12 +1,12 @@
-import { Listing, Reservation, User } from "@prisma/client";
+import { Listing, Reservation, User } from '@prisma/client';
 
-export type SafeListing = Omit<Listing, "createdAt"> & {
+export type SafeListing = Omit<Listing, 'createdAt'> & {
   createdAt: string;
 };
 
 export type SafeReservation = Omit<
-  Reservation, 
-  "createdAt" | "startDate" | "endDate" | "listing"
+  Reservation,
+  'createdAt' | 'startDate' | 'endDate' | 'listing'
 > & {
   createdAt: string;
   startDate: string;
@@ -16,9 +16,65 @@ export type SafeReservation = Omit<
 
 export type SafeUser = Omit<
   User,
-  "createdAt" | "updatedAt" | "emailVerified"
+  'createdAt' | 'updatedAt' | 'emailVerified'
 > & {
   createdAt: string;
   updatedAt: string;
   emailVerified: string | null;
 };
+
+export interface TLogin {
+  email: string;
+  password: string;
+}
+
+export interface loginResponse {
+  message: string;
+  token: string;
+  expires_in: string;
+  user: IUser;
+}
+
+export interface TRegister {
+  email: string;
+  name: string;
+  password: string;
+}
+
+export interface IUser {
+  _id: string;
+  email: string;
+  name: string;
+  avatar: string;
+  role: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface IListing {
+  _id: string;
+  title: string;
+  description: string;
+  imageSrc: string;
+  category: string;
+  host: IUser;
+  roomCount: number;
+  bathroomCount: number;
+  guestCount: number;
+  locationValue: string;
+  price: number;
+  createdAt: Date
+  updatedAt: Date
+  reservations: IReservation[];
+}
+
+export interface IReservation {
+  _id: string;
+  listing: IListing;
+  startDate: Date
+  endDate: Date
+  totalPrice : number
+  createdAt: Date
+  updatedAt: Date
+  user: IUser[]
+}
