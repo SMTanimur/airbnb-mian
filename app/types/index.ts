@@ -41,6 +41,18 @@ export interface TRegister {
   password: string;
 }
 
+export interface TListing{
+  title: string;
+  description: string;
+  imageSrc: string;
+  category: string;
+  roomCount: number;
+  bathroomCount: number;
+  guestCount: number;
+  locationValue: string;
+  price: number;
+}
+
 export interface IUser {
   _id: string;
   email: string;

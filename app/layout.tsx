@@ -8,7 +8,6 @@ import RentModal from '@/app/components/modals/RentModal';
 import './globals.css'
 import ClientOnly from './components/ClientOnly';
 import ToasterProvider from './providers/ToasterProvider';
-import getCurrentUser from './actions/getCurrentUser';
 import { QueryProvider } from './providers/query.provider';
 export const metadata = {
   title: 'Airbnb',
