@@ -16,7 +16,7 @@ import { categories } from '../navbar/Categories';
 import ImageUpload from '../inputs/ImageUpload';
 import Input from '../inputs/Input';
 import Heading from '../Heading';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { listClient } from '@/app/services/listing.service';
 
 enum STEPS {
@@ -34,6 +34,7 @@ const RentModal = () => {
 
   const [step, setStep] = useState(STEPS.CATEGORY);
   const { mutateAsync, isLoading } = useMutation(listClient.createList);
+  const queryClient = useQueryClient()
   const {
     register,
     handleSubmit,
@@ -106,6 +107,7 @@ const RentModal = () => {
     toast.promise(mutateAsync(formData), {
       loading: 'registering...',
       success: data => {
+        queryClient.invalidateQueries(['lists'])
         router.refresh();
         reset();
         setStep(STEPS.CATEGORY);
