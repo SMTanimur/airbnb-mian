@@ -1,18 +1,61 @@
-import Image from 'next/image'
-import { Button } from './components/shared/button'
+'use client';
+import Container from '@/app/components/Container';
+import EmptyState from '@/app/components/EmptyState';
 
+import ClientOnly from './components/ClientOnly';
+import { IListingsParams } from './types/custom.types';
+import { useListsQuery } from './hooks/useGetLists';
+import { useMe } from './hooks/useMe';
+import ListingCard from './components/listings/ListingCard';
+import Loader from './components/Loader';
 
-export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-       <Button
-       size={'lg'}
-       intent={'primary'}
-      className='rounded-xl'
-       
-       >
-        Project Init
-       </Button>
-    </main>
-  )
+interface HomeProps {
+  searchParams: IListingsParams;
 }
+
+const Home = ({ searchParams }: HomeProps) => {
+  const { data, isLoading } = useListsQuery({
+    limit:30,
+    category: searchParams.category,
+  });
+  const { me: currentUser } = useMe();
+  if (isLoading) return <Loader />;
+  if (data?.docs.length === 0) {
+    return (
+      <ClientOnly>
+        <EmptyState showReset />
+      </ClientOnly>
+    );
+  }
+  const listings = data?.docs || [];
+
+  return (
+    <ClientOnly>
+      <Container>
+        <div
+          className='
+            pt-24
+            grid 
+            grid-cols-1 
+            sm:grid-cols-2 
+            md:grid-cols-3 
+            lg:grid-cols-4
+            xl:grid-cols-5
+            2xl:grid-cols-6
+            gap-8
+          '
+        >
+          {listings.map((listing: any) => (
+            <ListingCard
+              currentUser={currentUser}
+              key={listing._id}
+              data={listing}
+            />
+          ))}
+        </div>
+      </Container>
+    </ClientOnly>
+  );
+};
+
+export default Home;

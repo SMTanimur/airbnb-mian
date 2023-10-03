@@ -4,6 +4,12 @@ export type SafeListing = Omit<Listing, 'createdAt'> & {
   createdAt: string;
 };
 
+export enum SortOrder {
+  /** Sort records in ascending order. */
+  Asc = 'asc',
+  /** Sort records in descending order. */
+  Desc = 'desc',
+}
 export type SafeReservation = Omit<
   Reservation,
   'createdAt' | 'startDate' | 'endDate' | 'listing'
@@ -61,6 +67,7 @@ export interface IUser {
   role: string;
   createdAt: string;
   updatedAt: string;
+  favoriteIds:string[]
 }
 
 export interface IListing {
