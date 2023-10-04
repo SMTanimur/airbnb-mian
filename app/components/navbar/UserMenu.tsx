@@ -12,6 +12,7 @@ import { IUser } from "@/app/types";
 
 import MenuItem from "./MenuItem";
 import Avatar from "../Avatar";
+import { useAuth } from "@/app/hooks/useAuth";
 
 interface UserMenuProps {
   currentUser?: IUser | null
@@ -21,7 +22,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
   currentUser
 }) => {
   const router = useRouter();
-
+const {logout,LogoutLoading}=useAuth()
   const loginModal = useLoginModal();
   const registerModal = useRegisterModal();
   const rentModal = useRentModal();
@@ -125,7 +126,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
                 <hr />
                 <MenuItem 
                   label="Logout" 
-                  onClick={() => signOut()}
+                  onClick={() => logout()}
                 />
               </>
             ) : (

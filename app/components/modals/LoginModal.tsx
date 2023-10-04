@@ -19,13 +19,14 @@ import Modal from "./Modal";
 import Input from "../inputs/Input";
 import Heading from "../Heading";
 import Button from "../Button";
+import { useAuth } from "@/app/hooks/useAuth";
+import { TLogin } from "@/app/types";
 
 const LoginModal = () => {
-  const router = useRouter();
   const loginModal = useLoginModal();
   const registerModal = useRegisterModal();
-  const [isLoading, setIsLoading] = useState(false);
-
+ 
+const {attemptToLogin,LoginLoading}=useAuth()
   const { 
     register, 
     handleSubmit,
@@ -41,25 +42,9 @@ const LoginModal = () => {
   
   const onSubmit: SubmitHandler<FieldValues> = 
   (data) => {
-    setIsLoading(true);
-
-    signIn('credentials', { 
-      ...data, 
-      redirect: false,
-    })
-    .then((callback) => {
-      setIsLoading(false);
-
-      if (callback?.ok) {
-        toast.success('Logged in');
-        router.refresh();
-        loginModal.onClose();
-      }
-      
-      if (callback?.error) {
-        toast.error(callback.error);
-      }
-    });
+   
+    attemptToLogin(data as TLogin)
+    
   }
 
   const onToggle = useCallback(() => {
@@ -76,7 +61,7 @@ const LoginModal = () => {
       <Input
         id="email"
         label="Email"
-        disabled={isLoading}
+        disabled={LoginLoading}
         register={register}  
         errors={errors}
         required
@@ -85,7 +70,7 @@ const LoginModal = () => {
         id="password"
         label="Password"
         type="password"
-        disabled={isLoading}
+        disabled={LoginLoading}
         register={register}
         errors={errors}
         required
@@ -126,7 +111,7 @@ const LoginModal = () => {
 
   return (
     <Modal
-      disabled={isLoading}
+      disabled={LoginLoading}
       isOpen={loginModal.isOpen}
       title="Login"
       actionLabel="Continue"

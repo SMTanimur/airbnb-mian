@@ -1,5 +1,3 @@
-
-
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useAtom } from 'jotai';
 import { useRouter } from 'next/navigation';
@@ -24,7 +22,7 @@ export function useAuth() {
     isLoading: SignupLoading,
     isError: IsSignupError,
   } = useMutation(userClient.register);
- 
+
   const {
     mutateAsync: loginMutation,
     isLoading: LoginLoading,
@@ -36,8 +34,6 @@ export function useAuth() {
     isError: IsLogoutError,
   } = useMutation(userClient.logout);
 
-
-
   const loginForm = useForm<TLogin>({
     defaultValues: {
       email: '',
@@ -45,20 +41,19 @@ export function useAuth() {
     },
   });
 
-  
-
   const registerForm = useForm<TRegister>({
     defaultValues: {
       email: '',
       password: '',
       name: '',
-    
     },
   });
   const attemptToLogin = async (data: TLogin) => {
     toast.promise(loginMutation(data), {
       loading: 'login...',
       success: data => {
+        queryClient.invalidateQueries(['me']);
+        queryClient.invalidateQueries(['currentUser']);
         setAuthorized(true);
         setToken(data.token);
         loginModal.onClose();
@@ -75,15 +70,15 @@ export function useAuth() {
       },
     });
   };
- 
-  const attemptToRegister = async (data:TRegister) => {
+
+  const attemptToRegister = async (data: TRegister) => {
     toast.promise(signupMutation(data), {
       loading: 'registering...',
       success: data => {
         setToken(data.token);
         setAuthorized(true);
-        queryClient.invalidateQueries(['me'])
-        queryClient.invalidateQueries(['currentUser'])
+        queryClient.invalidateQueries(['me']);
+        queryClient.invalidateQueries(['currentUser']);
         registerModal.onClose();
         router.push(`${window.location.origin}`);
         return <b> {data.message}</b>;
@@ -133,6 +128,5 @@ export function useAuth() {
     logout,
     LogoutLoading,
     IsLogoutError,
-  
   };
 }
