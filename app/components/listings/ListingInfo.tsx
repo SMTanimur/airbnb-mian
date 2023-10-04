@@ -5,7 +5,9 @@ import { IconType } from "react-icons";
 
 import useCountries from "@/app/hooks/useCountries";
 import { IUser, SafeUser } from "@/app/types";
-
+import { GrGroup } from "react-icons/gr";
+import { MdOutlineBedroomParent } from "react-icons/md";
+import { FaShower } from "react-icons/fa";
 import Avatar from "../Avatar";
 import ListingCategory from "./ListingCategory";
 
@@ -56,25 +58,30 @@ const ListingInfo: React.FC<ListingInfoProps> = ({
           <div>Hosted by {user?.name}</div>
           <Avatar src={user?.avatar} />
         </div>
-        <div className="
-            flex 
-            flex-row 
-            items-center 
-            gap-4 
-            font-light
-            text-neutral-500
-          "
-        >
-          <div>
-            {guestCount} guests
-          </div>
-          <div>
-            {roomCount} rooms
-          </div>
-          <div>
-            {bathroomCount} bathrooms
-          </div>
-        </div>
+        <div
+                    className="
+                        flex
+                        flex-row
+                        items-center
+                        gap-4
+                        font-light
+                        text-neutral-800
+                        justify-between
+                    "
+                >
+                    <div className="flex flex-row gap-3 items-center justify-center py-6 border rounded-xl border-neutral-300 flex-grow">
+                        <GrGroup size={24} />
+                        {guestCount} {guestCount > 1 ? 'guests' : 'guest'}
+                    </div>
+                    <div className="flex flex-row gap-3 items-center justify-center py-6 border rounded-xl border-neutral-300 flex-grow">
+                        <MdOutlineBedroomParent size={24} />
+                        {roomCount} {roomCount > 1 ? 'rooms' : 'room'}
+                    </div>
+                    <div className="flex flex-row gap-3 items-center justify-center py-6 border rounded-xl border-neutral-300 flex-grow">
+                        <FaShower size={24} />
+                        {bathroomCount} {bathroomCount > 1 ? 'bathrooms' : 'bathroom'}
+                    </div>
+                </div>
       </div>
       <hr />
       {category && (

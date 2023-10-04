@@ -12,32 +12,35 @@ import { useCurrentUser } from "@/app/hooks/useCurrentUser";
 const Navbar: React.FC = () => {
   const {currentUser}=useCurrentUser()
   return ( 
-    <div className="fixed w-full bg-white z-10 shadow-sm">
-      <div
+    <div className="fixed w-full bg-white z-10">
+    <div
         className="
-          py-4 
-          border-b-[1px]
+            py-4
+            border-b-[1px]
+            max-h-[80px]
         "
-      >
-      <Container>
-        <div 
-          className="
-            flex 
-            flex-row 
-            items-center 
-            justify-between
-            gap-3
-            md:gap-0
-          "
-        >
-          <Logo />
-          <Search />
-          <UserMenu currentUser={currentUser} />
-        </div>
-      </Container>
+    >
+        {/* <Container navbarListings={isOnListingsPage}> */}
+        <Container>
+            <div
+                className="
+                    flex
+                    flex-row
+                    items-center
+                    justify-between
+                    gap-3
+                    md:gap-0
+                "
+            >
+                {/* { isSmallScreen ? (<SmallScreenLogo />) : (<BigScreenLogo />) } */}
+                <Logo />
+                <Search />
+                <UserMenu currentUser={currentUser}/>
+            </div>
+        </Container>
     </div>
     <Categories />
-  </div>
+</div>
   );
 }
 
