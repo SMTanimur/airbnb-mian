@@ -34,7 +34,7 @@ const RentModal = () => {
 
   const [step, setStep] = useState(STEPS.CATEGORY);
   const { mutateAsync, isLoading } = useMutation(listClient.createList);
-  const queryClient = useQueryClient()
+  const queryClient = useQueryClient();
   const {
     register,
     handleSubmit,
@@ -105,14 +105,14 @@ const RentModal = () => {
     };
 
     toast.promise(mutateAsync(formData), {
-      loading: 'registering...',
+      loading: 'creating...',
       success: data => {
-        queryClient.invalidateQueries(['lists'])
+        queryClient.invalidateQueries(['lists']);
         router.refresh();
         reset();
         setStep(STEPS.CATEGORY);
         rentModal.onClose();
-        return <b> {data.message}</b>;
+        return  <b> {data.message}</b>;
       },
       error: error => {
         const {

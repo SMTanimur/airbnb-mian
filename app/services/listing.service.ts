@@ -6,6 +6,10 @@ import {
 } from '../types/custom.types';
 import { HttpClient } from '../utils/api/http';
 
+// const djf = `${
+//   startDate ? `&startDate=${startDate}` : ''
+// }${endDate ? `&endDate=${endDate}` : ''}`
+
 export const listClient = {
   createList: (variables: TListing) => {
     return HttpClient.post<{ message: string }>(`/lists`, variables);
@@ -28,14 +32,12 @@ export const listClient = {
       orderBy = 'updatedAt',
       sortedBy = 'desc',
     } = params as ListsQueryOptionsType;
-
     const url = `/lists?${host ? `&host=${host}` : ''}${
-      category ? `&category=${category}` : ''
-    }${bathroomCount ? `bathroomCount=${bathroomCount}` : ''}${
+      category ? `&category=${category.trim()}` : ''
+    }${bathroomCount ? `&bathroomCount=${bathroomCount}` : ''}${
       roomCount ? `&roomCount=${roomCount}` : ''
-    }${locationValue ? `&locationValue=${locationValue}` : ''}${
-      startDate ? `&startDate=${startDate}` : ''
-    }${endDate ? `&endDate=${endDate}` : ''}
+    }${locationValue ? `&locationValue=${locationValue}` : ''}
+  
     ${
       guestCount ? `&guestCount=${guestCount}` : ''
     }&searchJoin=and&limit=${limit}&page=${page}&orderBy=${orderBy}&sortedBy=${sortedBy}`;

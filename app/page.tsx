@@ -15,16 +15,15 @@ interface HomeProps {
 
 const Home = ({ searchParams }: HomeProps) => {
   const { data, isLoading } = useListsQuery({
-    limit:30,
+    limit: 30,
     category: searchParams.category,
-    bathroomCount: searchParams.bathroomCount,
-    roomCount: searchParams.roomCount,
+    bathroomCount:searchParams.bathroomCount,
+    endDate: searchParams.endDate,
     guestCount: searchParams.guestCount,
-    endDate:searchParams.endDate,
-    startDate:searchParams.startDate,
-    host:searchParams.host,
-    locationValue:searchParams.locationValue,
-    
+    host: searchParams.host,
+    locationValue: searchParams.locationValue,
+    roomCount: searchParams.roomCount,
+    startDate: searchParams.startDate,
   });
   const { me: currentUser } = useMe();
   if (isLoading) return <Loader />;
