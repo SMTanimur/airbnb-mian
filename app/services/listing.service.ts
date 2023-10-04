@@ -29,23 +29,17 @@ export const listClient = {
       sortedBy = 'desc',
     } = params as ListsQueryOptionsType;
 
-    const url = `/lists?host=${host}&category=${category}&roomCount=${roomCount}&bathroomCount=${bathroomCount}&guestCount=${guestCount}&locationValue=${locationValue}&startDate=${startDate}&endDate=${endDate}&limit=${limit}&page=${page}&orderBy=${orderBy}&sortedBy=${sortedBy}`;
-    return HttpClient.get<PaginatorInfo<IListing>>('/lists', {
-      params: {
-        page,
-        bathroomCount,
-        category,
-        endDate,
-        guestCount,
-        host,
-        locationValue,
-        roomCount,
-        startDate,
-        limit,
-        orderBy,
-        sortedBy,
-      },
-    });
+    const url = `/lists?${host ? `&host=${host}` : ''}${
+      category ? `&category=${category}` : ''
+    }${bathroomCount ? `bathroomCount=${bathroomCount}` : ''}${
+      roomCount ? `&roomCount=${roomCount}` : ''
+    }${locationValue ? `&locationValue=${locationValue}` : ''}${
+      startDate ? `&startDate=${startDate}` : ''
+    }${endDate ? `&endDate=${endDate}` : ''}
+    ${
+      guestCount ? `&guestCount=${guestCount}` : ''
+    }&searchJoin=and&limit=${limit}&page=${page}&orderBy=${orderBy}&sortedBy=${sortedBy}`;
+    return HttpClient.get<PaginatorInfo<IListing>>(url);
   },
   getList: (id: string) => {
     return HttpClient.get<IListing>(`/lists/${id}`);

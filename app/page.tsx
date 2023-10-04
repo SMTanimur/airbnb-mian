@@ -17,6 +17,14 @@ const Home = ({ searchParams }: HomeProps) => {
   const { data, isLoading } = useListsQuery({
     limit:30,
     category: searchParams.category,
+    bathroomCount: searchParams.bathroomCount,
+    roomCount: searchParams.roomCount,
+    guestCount: searchParams.guestCount,
+    endDate:searchParams.endDate,
+    startDate:searchParams.startDate,
+    host:searchParams.host,
+    locationValue:searchParams.locationValue,
+    
   });
   const { me: currentUser } = useMe();
   if (isLoading) return <Loader />;
