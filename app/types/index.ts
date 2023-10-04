@@ -47,7 +47,7 @@ export interface TRegister {
   password: string;
 }
 
-export interface TListing{
+export interface TListing {
   title: string;
   description: string;
   imageSrc: string;
@@ -58,6 +58,12 @@ export interface TListing{
   locationValue: string;
   price: number;
 }
+export interface TReservation {
+  listingId: string;
+  startDate: Date
+  endDate: Date
+  totalPrice: number;
+}
 
 export interface IUser {
   _id: string;
@@ -67,7 +73,7 @@ export interface IUser {
   role: string;
   createdAt: string;
   updatedAt: string;
-  favoriteIds:string[]
+  favoriteIds: string[];
 }
 
 export interface IListing {
@@ -82,18 +88,18 @@ export interface IListing {
   guestCount: number;
   locationValue: string;
   price: number;
-  createdAt: Date
-  updatedAt: Date
+  createdAt: Date;
+  updatedAt: Date;
   reservations: IReservation[];
 }
 
 export interface IReservation {
   _id: string;
-  listing: IListing;
-  startDate: Date
-  endDate: Date
-  totalPrice : number
-  createdAt: Date
-  updatedAt: Date
-  user: IUser[]
+  listingId: IListing;
+  startDate: Date;
+  endDate: Date;
+  totalPrice: number;
+  createdAt: Date;
+  updatedAt: Date;
+  user: IUser[];
 }

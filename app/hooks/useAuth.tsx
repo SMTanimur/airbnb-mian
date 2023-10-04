@@ -82,6 +82,8 @@ export function useAuth() {
       success: data => {
         setToken(data.token);
         setAuthorized(true);
+        queryClient.invalidateQueries(['me'])
+        queryClient.invalidateQueries(['currentUser'])
         registerModal.onClose();
         router.push(`${window.location.origin}`);
         return <b> {data.message}</b>;
