@@ -20,6 +20,8 @@ export interface IListingsParams {
   endDate?: string;
   locationValue?: string;
   category?: string;
+  maxPrice?: number;
+  minPrice?: number;
 }
 
 export type ListsQueryOptionsType = {
@@ -33,6 +35,8 @@ export type ListsQueryOptionsType = {
   category?: string;
   page?: number;
   limit?: number;
+  minPrice?: number;
+  maxPrice?: number;
   orderBy?: string;
   sortedBy?: SortOrder;
 };
@@ -41,7 +45,6 @@ export type QueryParamsType = {
   queryKey: QueryKey;
   pageParam?: string;
 };
-
 
 export interface PaginatorInfo<T> {
   docs: T[];

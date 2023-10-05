@@ -8,22 +8,26 @@ import { useListsQuery } from './hooks/useGetLists';
 import { useMe } from './hooks/useMe';
 import ListingCard from './components/listings/ListingCard';
 import Loader from './components/Loader';
+import useFilterState from './hooks/useFilterState';
 
 interface HomeProps {
   searchParams: IListingsParams;
 }
 
 const Home = ({ searchParams }: HomeProps) => {
+  const { filterState } = useFilterState();
   const { data, isLoading } = useListsQuery({
     limit: 30,
     category: searchParams.category,
-    bathroomCount:searchParams.bathroomCount,
+    bathroomCount: searchParams.bathroomCount,
     endDate: searchParams.endDate,
     guestCount: searchParams.guestCount,
     host: searchParams.host,
     locationValue: searchParams.locationValue,
     roomCount: searchParams.roomCount,
     startDate: searchParams.startDate,
+    maxPrice: searchParams.maxPrice,
+    minPrice: searchParams.minPrice,
   });
   const { me: currentUser } = useMe();
   if (isLoading) return <Loader />;

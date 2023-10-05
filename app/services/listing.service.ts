@@ -27,6 +27,8 @@ export const listClient = {
       host,
       locationValue,
       roomCount,
+      minPrice,
+      maxPrice,
       startDate,
       limit = 15,
       orderBy = 'updatedAt',
@@ -37,7 +39,8 @@ export const listClient = {
     }${bathroomCount ? `&bathroomCount=${bathroomCount}` : ''}${
       roomCount ? `&roomCount=${roomCount}` : ''
     }${locationValue ? `&locationValue=${locationValue}` : ''}
-  
+    ${minPrice ? `&minPrice=${minPrice}` : ''}
+    ${maxPrice ? `&maxPrice=${maxPrice}` : ''}
     ${
       guestCount ? `&guestCount=${guestCount}` : ''
     }&searchJoin=and&limit=${limit}&page=${page}&orderBy=${orderBy}&sortedBy=${sortedBy}`;
