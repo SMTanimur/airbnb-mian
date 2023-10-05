@@ -13,6 +13,7 @@ import { filterSchema } from '@/app/libs/filter';
 import { useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
+import { IoMdClose } from 'react-icons/io';
 
 function isEmptyString(str: string) {
   return !str || str.length === 0;
@@ -125,12 +126,25 @@ function FilterModalInner() {
   return (
     <form onSubmit={onSubmit}>
       <div className='relative p-6'>
-        <span className='absolute flex h-8 w-8 items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-gray-700'>
-          <i
+      
+          <button
+            className='
+                    p-1
+                    border-0 
+                    hover:opacity-70
+                    transition
+                    absolute
+                    left-9
+                  '
             onClick={() => onClose()}
-            className='ri-close-line cursor-pointer text-2xl'
-          ></i>
-        </span>
+          >
+            <IoMdClose size={18} />
+          </button>
+          {/* <i
+            onClick={() => onClose()}
+            className='ri-close-line text-gray-900 cursor-pointer text-2xl'
+          ></i> */}
+    
         <h1 className='text-center text-lg font-bold'>Filters</h1>
       </div>
       <div className='border-t' />
