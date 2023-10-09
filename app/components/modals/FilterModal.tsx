@@ -105,13 +105,7 @@ function FilterModalInner() {
       },
       { skipNull: true }
     );
-    // setFilterOptions({
-    //   ...filterOptions,
-    //   maxPrice,
-    //   minPrice,
-    //   bedCount,
-    //   bathroomCount,
-    // });
+ 
     onClose();
     router.push(url);
   });
