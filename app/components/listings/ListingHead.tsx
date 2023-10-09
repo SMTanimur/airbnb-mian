@@ -3,7 +3,7 @@
 import Image from "next/image";
 
 import useCountries from "@/app/hooks/useCountries";
-import { IUser, SafeUser } from "@/app/types";
+import { IUser } from "@/app/types";
 
 import Heading from "../Heading";
 import HeartButton from "../HeartButton";

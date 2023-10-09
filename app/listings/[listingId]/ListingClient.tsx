@@ -11,10 +11,7 @@ import useLoginModal from '@/app/hooks/useLoginModal';
 import {
   IListing,
   IReservation,
-  IUser,
-  SafeListing,
-  SafeReservation,
-  SafeUser,
+  IUser
 } from '@/app/types';
 
 import Container from '@/app/components/Container';

@@ -9,10 +9,7 @@ import useCountries from '@/app/hooks/useCountries';
 import {
   IListing,
   IReservation,
-  IUser,
-  SafeListing,
-  SafeReservation,
-  SafeUser,
+  IUser
 } from '@/app/types';
 
 import HeartButton from '../HeartButton';

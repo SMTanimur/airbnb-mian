@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import { IconType } from "react-icons";
 
 import useCountries from "@/app/hooks/useCountries";
-import { IUser, SafeUser } from "@/app/types";
+import { IUser } from "@/app/types";
 import { GrGroup } from "react-icons/gr";
 import { MdOutlineBedroomParent } from "react-icons/md";
 import { FaShower } from "react-icons/fa";
