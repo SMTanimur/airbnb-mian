@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Airbnb-clone
+A Website Vacation Homes & Condo Rentals app Using Nextjs, Typescript, Tailwindcss, React-query, Zustand
 
-## Getting Started
+## Overview
+- Official website: [https://ummah-link-graphql.vercel.app](https://airbnb-mian.vercel.app/)
+- Author: SM Tanimur Rahman ( [@SMTanimur](https://github.com/SMTanimur) )
 
-First, run the development server:
+## Preview
+![home](https://github.com/SMTanimur/airbnb-mian/assets/80884335/4da3fa76-766d-4120-85f6-6a2b79843738)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Resources
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+GithubUrl : [https://github.com/SMTanimur/UmmahLink-graphql](https://github.com/SMTanimur/airbnb-mian)
+BackendUrl: [https://github.com/SMTanimur/airbnb-mian](https://github.com/SMTanimur/airbnb-backend)
+## Frontend Main technology used
+- Nextjs 13, Typescript
+- Tailwindcss
+- Zustand (State management)
+- Axios (Support fetching data) and Graphql
+- Swiper (Slider), react-modal
+- React-form-hook , yup (Validation)
+- React-hot-toast, sweetalert2 (Message UI)
+- React-perfect-scrollbar
+- React-perfect-scrollbar
+- react-virtuoso
+## Backend Main technology used
+- Nestjs, Typescript
+- Mongoose
+- Express
+- Passportjs
+- Express-session base (Auth)
+- Cloudinary
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+## Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Users can list their properties, including homes, apartments, cottages, and more, with details such as location, size, price, and availability.
+- A robust search engine with filters for location, check-in/out dates, number of guests, price range, property type, and amenities.
+- Post Todos:[Create/Update/Delete/Like]
+-A booking system that allows users to reserve properties, choose dates, and make payments securely.
+- An option for properties where guests can instantly book without host approval.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Screenshots
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+<details>
+ <summary>Home Page</summary>
+ <p>
+   
+![home](https://github.com/SMTanimur/airbnb-mian/assets/80884335/b116ede9-7bfa-4c48-be0b-565bad456cba)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+ </p>
+</details>
+<details>
+ <summary>Filter Modal</summary>
+ <p>
+   
+![filter](https://github.com/SMTanimur/airbnb-mian/assets/80884335/3d787ab4-49f0-4177-81f7-49f50e570eef)
+
+
+ </p>
+</details>
+<details>
+ <summary>Create your Home Modal</summary>
+ <p>
+   
+![create-home](https://github.com/SMTanimur/airbnb-mian/assets/80884335/e4c9b252-7088-491b-b4e8-f58e1635e6d8)
+
+
+ </p>
+</details>
+<details>
+ <summary>Login</summary>
+ <p>
+   
+
+![login](https://github.com/SMTanimur/airbnb-mian/assets/80884335/11d74660-b5eb-49f8-849d-65d8772f6744)
+
+
+ </p>
+</details>
+
+
+
